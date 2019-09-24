@@ -22,6 +22,6 @@ public class InitUser {
 
     private final  String string="测试";
 
-
+    private final  String string3="测试4";
 
 }
