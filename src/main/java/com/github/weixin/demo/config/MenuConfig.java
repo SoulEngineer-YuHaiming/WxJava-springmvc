@@ -8,6 +8,10 @@ import me.chanjar.weixin.mp.api.impl.WxMpServiceImpl;
 import me.chanjar.weixin.mp.config.WxMpConfigStorage;
 import me.chanjar.weixin.mp.config.impl.WxMpDefaultConfigImpl;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 import static me.chanjar.weixin.common.api.WxConsts.MenuButtonType;
 
 /**
@@ -16,6 +20,21 @@ import static me.chanjar.weixin.common.api.WxConsts.MenuButtonType;
  */
 public class MenuConfig {
 
+    private  static  Properties props =new Properties();
+    static {
+         props = new Properties();
+        InputStream in = MenuConfig.class.getClassLoader().getResourceAsStream("wx.properties");
+        if (in == null) {
+            throw new RuntimeException("配置文件" + "不存在");
+        }
+        try {
+            props.load(in);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
     /**
      * 定义菜单结构
      *
@@ -118,7 +137,8 @@ public class MenuConfig {
      * @param args
      */
     public static void main(String[] args) {
-        MainConfig mainConfig = new MainConfig("appid", "appsecret", "token", "aesKey");
+//        MainConfig mainConfig = new MainConfig("appid", "appsecret", "token", "aesKey");
+        MainConfig mainConfig = new MainConfig(props.get("appId").toString(), props.get("appSecret").toString(), props.get("token").toString(), props.get("aesKey").toString());
         WxMpService wxMpService = mainConfig.wxMpService();
         try {
             wxMpService.getMenuService().menuCreate(getMenu());
