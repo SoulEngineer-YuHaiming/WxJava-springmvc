@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 @Configuration
 public class InitUser {
 
+    private final  String string="测试";
 
 
 
