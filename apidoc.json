@@ -1,0 +1,8 @@
+{
+    "name": "apidoc-example",
+    "version": "0.3.0",
+    "description": "apiDoc example project",
+    "title": "Custom apiDoc browser title",
+    "url" : "https://127.0.0.1:8090"
+
+}

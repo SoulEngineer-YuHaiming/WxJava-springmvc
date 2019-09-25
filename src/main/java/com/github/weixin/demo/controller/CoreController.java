@@ -3,6 +3,7 @@ package com.github.weixin.demo.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import me.chanjar.weixin.common.error.WxErrorException;
 import me.chanjar.weixin.mp.config.WxMpConfigStorage;
 import org.apache.commons.lang3.StringUtils;
